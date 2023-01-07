@@ -1,4 +1,4 @@
-//selection sort
+//Insertion Sort
 #include<stdio.h>
 void swap(int *a, int *b){
     int temp;
@@ -13,21 +13,20 @@ void display(int a[],int s){
         printf("%3d",a[i]);
     }
 }
-void selectionSort(int a[],int s){
-    for (int i = 0; i < s-1; i++)
+void insertionSort(int a[],int s){
+    for (int i = 1; i < s; i++)
     {
-        int min=i;
-        for (int j = i+1; j < s; j++)
+        int temp=a[i];
+        int j=i-1;
+        while (j>=0 && temp<a[j])
         {
-            if (a[min]>a[j])
-            {
-                min=j;
-            }
+            a[j+1]=a[j];
+            display(a,s);
+            j--;
         }
-        swap(&a[i],&a[min]);
-        display(a,s);
+        a[j+1]=temp;
+        printf("\n%d iteration",i);
     }
-    
 }
 int main(void){
     int size;
@@ -39,7 +38,8 @@ int main(void){
         printf("\nElement %d: ",i+1);
         scanf("%d",&arr[i]);
     }
-    selectionSort(arr,size);
+    insertionSort(arr,size);
+    display(arr,size);
     printf("\n");
     return 0;
 }

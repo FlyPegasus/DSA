@@ -7,10 +7,52 @@ struct Node
     struct Node* next;
 };
 struct Node* head=NULL;
-//struct Node createNode(int data){}
+//struct Node* createNode(int data){}
 void insertBeg(int item){
-    struct
+    struct Node* curr=(struct Node*)malloc(sizeof(struct Node*));
+    curr->data=item;
+    curr->next=head;
+    head=curr;
+}
+void insertEnd(int item){
+    struct Node* curr=(struct Node*)malloc(sizeof(struct Node*));
+    struct Node* temp;
+    temp=head;
+    curr->data=item;
+    curr->next=NULL;
+    if (head==NULL)
+    {
+        head=curr;
+        return;
+    }
+    while (temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=curr;
+}
+void display(){
+    struct Node* temp;
+    temp=head;
+    while (temp!=NULL)
+    {
+        printf("%3d",temp->data);
+        temp=temp->next;
+    }
+    printf("\n");
 }
 int main(void){
+    int choice;
+    while (1){
+        printf("******MENU******\n1.insertBeg\n2.insertEnd\n3.display\nEnter your choice: ");
+        scanf("%d",&choice);
+        switch(choice){
+            case 1: int item; printf("Enter item: "); scanf("%d",&item); insertBeg(item); break;
+            //case 2: int item; printf("Enter item: "); scanf("%d",&item); search(item); break;
+            case 2: printf("Enter item: "); scanf("%d",&item); insertEnd(item); break;
+            case 3: display(); break;
+            default: exit(0); break;
+        }
+    }
     return 0;
 }
