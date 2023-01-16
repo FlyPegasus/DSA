@@ -6,10 +6,10 @@ void swap(int *a,int *b){
     *a=*b;
     *b=temp;
 }
-int partition(int a[],int lb,int ub){\
+int partition(int a[],int lb,int ub){
     int start=lb;
     int end=ub;
-    int pivot=a[0];
+    int pivot=a[start];
     while(start<end){
         while(a[start]<=a[pivot]){
             //swap(&a[start],&pivot);
@@ -39,7 +39,6 @@ int main(void){
     printf("Enter array size: ");
     scanf("%d",&n);
     int arr[n];
-    printf("Enter array elements: ");
     for(int i=0;i<n;i++){
         printf("Element no. %d: ",i+1);
         scanf("%d",(arr+i));

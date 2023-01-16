@@ -1,0 +1,69 @@
+//Merge Sort
+#include<stdio.h>
+void merge(int a[],int l,int m,int u){
+    int i=l;
+    int k=l;
+    int j=m+1;
+    int b[u+1];
+    while (i<=m && j<=u)
+    {
+        if (a[i]<a[j])
+        {
+            b[k]=a[i];
+            i++;
+            k++;
+        }
+        else{
+            b[k]=a[j];
+            j++;
+            k++;
+        }
+    }
+    if (i>m)
+    {
+        while (j<=u)
+        {
+            b[k]=a[j];
+            j++;
+            k++;
+        }
+    }
+    else{
+        while(i<=m){
+            b[k]=a[i];
+            i++;
+            k++;
+        }
+    }
+    for (int d = l; d <= u; d++)
+    {
+        a[d]=b[d];
+    }
+    
+}
+void mergeSort(int a[],int lb, int ub){
+    int mid;
+    if (lb<ub)
+    {
+        mid=(lb+ub)/2;
+    }
+    mergeSort(a,lb,mid);
+    mergeSort(a,mid+1,ub);
+    merge(a,lb,mid,ub);
+}
+int main(void){
+    int size;
+    printf("Enter array size: ");
+    scanf("%d",&size);
+    int arr[size];
+    printf("Enter array elements: \n");
+    for (int i = 0; i < size; i++)
+    {
+        printf("Element: ");
+        scanf("%d",&arr[i]);
+    }
+    mergeSort(arr,0,size-1);
+    return 0;
+}
+
+//Error: Segmentation Fault
