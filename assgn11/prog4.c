@@ -13,7 +13,6 @@ void countingSort(int a[],int n){
         {
             min=a[i];
         }
-        
     }
     //Initializing the array with 0s
     int arr[max+1];
