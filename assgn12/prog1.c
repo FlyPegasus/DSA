@@ -1,5 +1,12 @@
-//Merge Sort
+//Merge Sort with steps <3
 #include<stdio.h>
+void display(int arr[],int low,int high){
+    for (int i = low; i < high+1; i++)
+    {
+        printf("%3d",arr[i]);
+    }
+    printf("\n");
+}
 void merge(int a[],int l,int m,int u){
     int i=l;
     int k=l;
@@ -39,17 +46,22 @@ void merge(int a[],int l,int m,int u){
     {
         a[d]=b[d];
     }
-    
 }
 void mergeSort(int a[],int lb, int ub){
     int mid;
     if (lb<ub)
     {
         mid=(lb+ub)/2;
+        mergeSort(a,lb,mid);
+        printf("Partitioning the array.\n");
+        display(a,lb,mid);
+        mergeSort(a,mid+1,ub);
+        printf("Partitioning the array.\n");
+        display(a,mid+1,ub);
+        merge(a,lb,mid,ub);
+        printf("Merging.\n");
+        display(a,lb,ub);
     }
-    mergeSort(a,lb,mid);
-    mergeSort(a,mid+1,ub);
-    merge(a,lb,mid,ub);
 }
 int main(void){
     int size;
@@ -62,8 +74,9 @@ int main(void){
         printf("Element: ");
         scanf("%d",&arr[i]);
     }
+    printf("MergeSort steps: \n");
     mergeSort(arr,0,size-1);
+    printf("Sorted array: ");
+    display(arr,0,size-1);
     return 0;
 }
-
-//Error: Segmentation Fault
