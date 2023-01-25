@@ -1,3 +1,4 @@
+//Stack using Array
 #include<stdio.h>
 int top=-1;
 void push(int a[],int s){

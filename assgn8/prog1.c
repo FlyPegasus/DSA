@@ -6,9 +6,15 @@ struct Tree{
     struct Tree* lchild;
     struct Tree* rchild;
 };
-void insert(struct Tree* root){
+/*struct Tree* newNode(int item){
+
+}*/
+
+struct Tree* root=NULL;
+void insert(/*struct Tree* root*/){
     struct Tree* curr=(struct Tree*)malloc(sizeof(struct Tree*));
-    struct Tree* temp=(struct Tree*)malloc(sizeof(struct Tree*));
+    struct Tree* temp=root;
+    struct Tree* parent=NULL;
     int item;
     printf("Enter element to be inserted: ");
     scanf("%d",&item);
@@ -20,21 +26,39 @@ void insert(struct Tree* root){
         root=curr;
         return;
     }
-    temp=root;
+    //temp=root;
     while (temp!=NULL)
     {
-        if (item==temp->data)
+        /*if (item==temp->data)
         {
             return;
-        }
-        else if(item<temp->data){
+        }*/
+        if(item<temp->data){
+            parent=temp;
             temp=temp->lchild;
+            
         }
         else{
+            parent=temp;
             temp=temp->rchild;
         }
     }
-    temp=curr;
+    //temp=curr;
+    if (item<parent->data)
+    {
+        parent->lchild=curr;
+    }
+    else{
+        parent->rchild=curr;
+    }
+}
+void test(struct Tree* x){
+    struct Tree* temp=(struct Tree*)malloc(sizeof(struct Tree*));
+    temp=x;
+    while(temp!=NULL){
+        printf("%3d",temp->data);
+        temp=temp->lchild;
+    }
 }
 //inorder
 void preorder(struct Tree* x){
@@ -50,14 +74,15 @@ void preorder(struct Tree* x){
 //postorder
 //search
 int main(void){
-    struct Tree* root=NULL;
+    //struct Tree* root=NULL;
     int choice;
     while (1){
-        printf("******MENU******\n1.insert\n2.preorder\nEnter your choice: ");
+        printf("******MENU******\n1.insert\n2.preorder\n3.test\nEnter your choice: ");
         scanf("%d",&choice);
         switch(choice){
-            case 1: insert(root); break;
+            case 1: insert(); break;
             case 2: preorder(root); break;
+            case 3: test(root); break;
             default: exit(0); break;
         }
     }

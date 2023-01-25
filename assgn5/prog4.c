@@ -7,7 +7,6 @@ struct Node
     struct Node* next;
 };
 struct Node* head=NULL;
-//struct Node* createNode(int data){}
 void insertBeg(int item){
     struct Node* curr=(struct Node*)malloc(sizeof(struct Node*));
     curr->data=item;
@@ -31,6 +30,24 @@ void insertEnd(int item){
     }
     temp->next=curr;
 }
+void delEnd(){
+    struct Node* temp;
+    temp=head;
+    if (head==NULL)
+    {
+        printf("Empty List.\n");
+    }
+    else if(head->next==NULL){
+        head=NULL;
+    }
+    else{
+        while (temp->next->next!=NULL)
+        {
+            temp=temp->next;
+        }
+        temp->next=NULL;
+    }
+}
 void display(){
     struct Node* temp;
     temp=head;
@@ -44,13 +61,14 @@ void display(){
 int main(void){
     int choice;
     while (1){
-        printf("******MENU******\n1.insertBeg\n2.insertEnd\n3.display\nEnter your choice: ");
+        printf("******MENU******\n1.insertBeg\n2.insertEnd\n3.display\n4.delEnd\nEnter your choice: ");
         scanf("%d",&choice);
         switch(choice){
             case 1: int item; printf("Enter item: "); scanf("%d",&item); insertBeg(item); break;
             //case 2: int item; printf("Enter item: "); scanf("%d",&item); search(item); break;
             case 2: printf("Enter item: "); scanf("%d",&item); insertEnd(item); break;
             case 3: display(); break;
+            case 4: delEnd(); break;
             default: exit(0); break;
         }
     }

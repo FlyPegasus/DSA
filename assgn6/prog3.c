@@ -21,7 +21,6 @@ void insert(){
     struct Node* curr=(struct Node*)malloc(sizeof(struct Node*));
     int item;
     printf("Enter item: ");
-    
     scanf("%d",&item);
     if (isEmpty())
     {
@@ -77,3 +76,4 @@ int main(void){
     }
     return 0;
 }
+//Issues: Element is not inserting at beggining

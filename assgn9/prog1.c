@@ -1,9 +1,8 @@
-//Queue using Single Linked List
+//AVL tree
 #include<stdio.h>
 #include<stdlib.h>
-struct Node{
+struct Tree{
     int data;
-    struct Node* next;
 };
 int main(void){
     return 0;

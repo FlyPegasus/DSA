@@ -1,10 +1,11 @@
-//Queue using Single Linked List
+//Add two polynomials using linked list
 #include<stdio.h>
-#include<stdlib.h>
 struct Node{
     int data;
+    int exp;
     struct Node* next;
 };
+struct Node* createPoly(){}
 int main(void){
     return 0;
 }

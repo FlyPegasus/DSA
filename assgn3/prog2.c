@@ -1,4 +1,4 @@
-//Queue
+//Queue using Array
 #include<stdio.h>
 int rear=-1,front=0;
 int isEmpty(){
